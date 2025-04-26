@@ -1,97 +1,74 @@
-# Getting Started
+# Using a Mac mini as a tool for learning networking 
 
-This guide will help you set up and customize your MkDocs documentation site.
+Treat it like a “home server” or lab machine. Here are some **practical and educational networking projects** you can run on it without needing to change the OS:
 
-## Prerequisites
+---
 
-Before you begin, ensure you have the following installed:
+### **1. Host a Local Web Server**
+- **Tools**: Apache, Nginx, or even Node.js
+- **Purpose**: Learn about HTTP, ports, DNS (local), and SSL
+- **Example**: Serve a small website on your LAN, configure reverse proxies, add SSL with self-signed certs
 
-- [Python](https://www.python.org/) (version 3.7 or higher)
-- [pip](https://pip.pypa.io/en/stable/installation/) (Python package installer)
-- [Git](https://git-scm.com/) (for version control)
+---
 
-## Installation
+### **2. Set Up a DNS Server**
+- **Tools**: `dnsmasq`, `Bind`, or even `Pi-hole` (can be run via Docker)
+- **Purpose**: Learn about name resolution, DNS caching, and filtering
+- **Example**: Use your Mac mini as the DNS resolver for your devices
 
-### Create Your Repository
+---
 
-1. Click the "Use this template" button on GitHub to create a new repository based on this template.
-2. Clone your new repository to your local machine:
+### **3. Run a DHCP Server**
+- **Tool**: `dnsmasq` can also handle DHCP
+- **Purpose**: Learn how IP addresses are assigned dynamically
 
-```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
-```
+---
 
-### Set Up Development Environment
+### **4. Try Out Docker and Networking**
+- **Install Docker Desktop** on macOS
+- **Use Cases**:
+  - Simulate multiple servers/containers with different services
+  - Explore container networking (bridge, host, overlay)
+  - Run services like databases, Nginx, VPNs, etc.
+  - Practice port forwarding and service discovery
 
-1. Create a virtual environment (optional but recommended):
+---
 
-```bash
-python -m venv venv
-```
+### **5. Create a File Server (SMB or FTP)**
+- **Already doing SMB** with File Sharing
+- **Try FTP/SFTP** with something like **macOS’s built-in SSH or third-party FTP servers**
+- Learn about user access, authentication, and service exposure
 
-2. Activate the virtual environment:
+---
 
-=== "Windows"
-    ```bash
-    venv\Scripts\activate
-    ```
+### **6. Run Wireshark**
+- Analyze local network traffic
+- Learn about protocols: TCP, UDP, ARP, ICMP, DNS, DHCP
+- **Tip**: Use it while browsing, streaming, or downloading to see real traffic in action
 
-=== "macOS/Linux"
-    ```bash
-    source venv/bin/activate
-    ```
+---
 
-3. Install the required packages:
+### **7. Build a Virtual Lab with UTM or VirtualBox**
+- Install virtual machines (e.g., Ubuntu Server, pfSense)
+- **Create a network lab**:
+  - Simulate routers, firewalls, web servers
+  - Isolate test environments (e.g., VLANs, subnets)
 
-```bash
-pip install -r requirements.txt
-```
+---
 
-## Local Development
+### **8. Practice SSH and Remote Access**
+- **Enable SSH on Mac mini**
+- **Connect from another device** on your LAN or remotely
+- Practice port forwarding, tunneling, and secure shell sessions
 
-1. Start the local development server:
+---
 
-```bash
-mkdocs serve
-```
+### Bonus Ideas:
+- **Run Homebrew services** like:
+  - `ngrok` (secure tunnels to localhost)
+  - `nmap` (network scanner)
+  - `iperf3` (test network speed)
+- **Build a small DevOps stack**: Git, CI/CD runners, Prometheus/Grafana for monitoring, etc.
 
-2. Open your browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+---
 
-3. Make changes to your Markdown files in the `docs/` directory and see the changes reflected in real-time.
-
-## Basic Configuration
-
-The main configuration file for your MkDocs site is `mkdocs.yml`. Here are some key settings you might want to customize:
-
-```yaml
-# Basic site information
-site_name: Your Project Name
-site_description: A description of your project
-site_author: Your Name
-site_url: https://yourusername.github.io/your-repo-name/
-
-# Repository information
-repo_name: yourusername/your-repo-name
-repo_url: https://github.com/yourusername/your-repo-name
-```
-
-## Adding Content
-
-1. Create new Markdown files in the `docs/` directory.
-2. Update the `nav` section in `mkdocs.yml` to include your new pages:
-
-```yaml
-nav:
-  - Home: index.md
-  - Getting Started: getting-started.md
-  - New Page: new-page.md
-  - Section:
-    - Subsection Page: section/subsection-page.md
-```
-
-## Next Steps
-
-- Learn more about [configuration options](user-guide/configuration.md)
-- Explore [customization](user-guide/customization.md) possibilities
-- Set up [deployment](user-guide/deployment.md) to GitHub Pages
