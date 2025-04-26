@@ -1,61 +1,118 @@
-# Welcome to Project Documentation
+# **Beginner Networking Roadmap Using Your Mac mini**
 
-## Overview
+### **Stage 1: Local Network Awareness (Week 1)**
 
-This is a documentation site built using [MkDocs](https://www.mkdocs.org/) with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme. Use this template to create beautifully styled documentation for your projects.
+**Goal**: Understand your local network and basic tools
 
-## Features
+#### **Tasks:**
+- [ ] Install [**Homebrew**](https://brew.sh/) if you haven’t already
+- [ ] Run basic commands to explore your network:
+  - `ipconfig getifaddr en0` – find your Mac’s IP
+  - `netstat -rn` – view routing table
+  - `arp -a` – see local devices
+  - `ping google.com`
+  - `traceroute google.com`
+- [ ] Use **`nmap`** to scan your network
+  ```bash
+  brew install nmap
+  nmap -sn 192.168.1.0/24
+  ```
 
-- **Fast and Lightweight**: Built on MkDocs for speed and efficiency
-- **Modern Design**: Uses Material for MkDocs for a clean, responsive look
-- **Customizable**: Easy to extend and customize to your needs
-- **Markdown Based**: Write documentation using simple Markdown syntax
-- **Search Functionality**: Built-in search to find content quickly
-- **Dark Mode Support**: Toggle between light and dark themes
-- **Code Highlighting**: Syntax highlighting for code blocks
-- **Automatic Deployment**: GitHub Actions workflow for automatic deployment
+**What you’ll learn**:
+- IP addresses, ARP, ping, DNS, routing basics
 
-## Quick Start
+---
 
-```bash
-# Clone this repository or use it as a template
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+### **Stage 2: Build a Local Web Server (Week 2)**
 
-# Install dependencies
-pip install -r requirements.txt
+**Goal**: Learn about HTTP, web servers, and port forwarding
 
-# Start the local development server
-mkdocs serve
-```
+#### **Tasks:**
+- [ ] Install a web server:
+  ```bash
+  brew install nginx
+  sudo nginx
+  ```
+- [ ] Access it at `http://localhost` or from other devices via your Mac mini’s IP
+- [ ] Customize `nginx.conf` to serve a simple HTML page
+- [ ] Forward a custom port (e.g., `:8080`) and access it on LAN
 
-## Example Code Block
+**What you’ll learn**:
+- HTTP basics, static hosting, port configuration, LAN access
 
-```python
-def hello_world():
-    """Print a greeting message."""
-    print("Hello, Documentation World!")
-    
-    return True
+---
 
-# Call the function
-hello_world()
-```
+### **Stage 3: File Server and Network Sharing (Week 3)**
 
-## Example Admonitions
+**Goal**: Serve and access files over the network
 
-!!! note
-    This is a note admonition. Use it to highlight important information.
+#### **Tasks:**
+- [ ] Go to **System Settings → General → Sharing**
+- [ ] Enable **File Sharing**
+- [ ] Share a folder and test access from:
+  - Another Mac: Finder → Go → Connect to Server
+  - Windows/Linux: SMB access (`\\macmini.local`)
+- [ ] Try **SFTP** by enabling **Remote Login (SSH)**
 
-!!! tip
-    This is a tip admonition. Use it to provide helpful advice.
+**What you’ll learn**:
+- SMB, SFTP, file permissions, user management
 
-!!! warning
-    This is a warning admonition. Use it to warn users about potential issues.
+---
 
-!!! danger
-    This is a danger admonition. Use it to highlight critical information.
+### **Stage 4: DNS and DHCP Basics with `dnsmasq` (Week 4)**
 
-## Next Steps
+**Goal**: Simulate DNS and DHCP service
 
-Check out the [Getting Started](getting-started.md) guide to learn more about how to use this template.
+#### **Tasks:**
+- [ ] Install dnsmasq:
+  ```bash
+  brew install dnsmasq
+  ```
+- [ ] Configure `/usr/local/etc/dnsmasq.conf` to:
+  - Serve a static DNS mapping (e.g. `dev.local`)
+  - Simulate DHCP server if desired
+- [ ] Point other devices' DNS to your Mac mini
+
+**What you’ll learn**:
+- DNS resolution, DHCP leases, IP assignment
+
+---
+
+### **Stage 5: Network Monitoring with Wireshark (Week 5)**
+
+**Goal**: Inspect real traffic and understand protocols
+
+#### **Tasks:**
+- [ ] Install [Wireshark](https://www.wireshark.org/)
+- [ ] Run a capture session (you may need to install CLI tools)
+- [ ] Filter for traffic like:
+  - `http`
+  - `dns`
+  - `tcp.port == 80`
+
+**What you’ll learn**:
+- Protocol analysis, packet inspection, headers
+
+---
+
+### **Bonus Projects (Ongoing)**
+- [ ] **Run Pi-hole** in Docker to block ads across your network
+- [ ] **Run a VPN** server using WireGuard or OpenVPN in Docker
+- [ ] **Use UTM or VirtualBox** to simulate networks with virtual machines (pfSense, Ubuntu server)
+- [ ] **Create an SSH tunnel** to access your Mac mini from outside your network
+
+---
+
+## Tools Summary
+
+| Tool        | Purpose                          |
+|-------------|----------------------------------|
+| `ping`, `traceroute`, `netstat`, `nmap` | Basic networking tools |
+| `nginx`     | Web server                       |
+| File Sharing / SFTP | Network file sharing     |
+| `dnsmasq`   | DNS + DHCP                       |
+| Wireshark   | Traffic analysis                 |
+| Docker      | Run services easily              |
+| UTM/VirtualBox | Virtual lab setup             |
+
+---
