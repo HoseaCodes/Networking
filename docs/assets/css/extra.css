@@ -1,0 +1,108 @@
+/* Custom CSS for MkDocs template */
+
+/* Root variables for consistent styling */
+:root {
+    --md-primary-fg-color: #1a73e8;
+    --md-primary-fg-color--light: #5393ff;
+    --md-primary-fg-color--dark: #0d47a1;
+    --md-accent-fg-color: #1a73e8;
+    --md-accent-fg-color--transparent: rgba(26, 115, 232, 0.1);
+  }
+  
+  /* Enhance link styling */
+  .md-content a {
+    color: var(--md-primary-fg-color);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--md-primary-fg-color--light);
+    transition: color 0.2s, border-bottom-color 0.2s;
+  }
+  
+  .md-content a:hover {
+    color: var(--md-primary-fg-color--dark);
+    border-bottom-color: var(--md-primary-fg-color--dark);
+  }
+  
+  /* Improve code blocks */
+  .md-typeset pre {
+    border-left: 4px solid var(--md-primary-fg-color);
+    border-radius: 4px;
+  }
+  
+  .md-typeset code {
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+  }
+  
+  /* Make tables more readable */
+  .md-typeset table:not([class]) {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  .md-typeset table:not([class]) th {
+    background-color: var(--md-primary-fg-color--light);
+    color: white;
+  }
+  
+  .md-typeset table:not([class]) tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+  
+  /* Style admonitions */
+  .md-typeset .admonition,
+  .md-typeset details {
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Custom header styling */
+  .md-typeset h1 {
+    color: var(--md-primary-fg-color--dark);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 0.5em;
+  }
+  
+  .md-typeset h2 {
+    color: var(--md-primary-fg-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 0.3em;
+  }
+  
+  /* Custom blockquote styling */
+  .md-typeset blockquote {
+    border-left: 4px solid var(--md-primary-fg-color);
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 0.5em 1em;
+    margin: 1em 0;
+  }
+  
+  /* Footer customization */
+  .md-footer {
+    background-color: var(--md-primary-fg-color--dark);
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 76.1875em) {
+    .md-nav--primary .md-nav__title {
+      background-color: var(--md-primary-fg-color);
+      color: white;
+    }
+  }
+  
+  /* Print optimizations */
+  @media print {
+    .md-typeset a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    .md-typeset a::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      color: #666;
+    }
+    
+    .md-footer, .md-header, .md-tabs {
+      display: none;
+    }
+  }
