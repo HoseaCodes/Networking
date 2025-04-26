@@ -1,3 +1,5 @@
+# Intermediate
+
 Network Design
 * VPC Setup: Create a Virtual Private Cloud (VPC) to isolate and secure resources.
 * Subnets: Design public and private subnets within the VPC.
