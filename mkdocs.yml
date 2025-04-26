@@ -1,10 +1,10 @@
 site_name: Networking+
 site_description: Documentation template built with MkDocs
 site_author: Dominique Hosea
-site_url: https://yourusername.github.io/your-repo-name/
+site_url: https://hoseacodes.github.io/Networking/
 
 # Repository
-repo_name: yourusername/your-repo-name
+repo_name: HoseaCodes/Networking
 repo_url: https://github.com/HoseaCodes/Networking
 
 # Copyright
